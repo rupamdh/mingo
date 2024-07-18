@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    <div id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></div>
+{% endblock %}
+
+{% block content_header %}
+    <div class="app-page-entry d-flex align-items-center">
+        <h1 class="page-heading d-flex text-gray-900 fw-bolder fs-2x flex-column justify-content-center my-0">{{ title }}</h1>
+    </div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block nav-sidebar %}
+    {% include "admin/nav_sidebar.html" %}
+{% endblock %}
+
+{% block scrolltop %}
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true"><i class="ki-outline ki-arrow-up"></i></div>
+{% endblock %}
+    
