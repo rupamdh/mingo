@@ -32,7 +32,7 @@
                 <div class="d-flex flex-stack flex-lg-row-fluid" id="kt_app_header_wrapper">
                     <div class="app-page-title d-flex flex-column gap-1 me-3 mb-5 mb-lg-0">
                         <h1 class="fs-2 text-gray-900 fw-bold m-0">{{ title }}</h1>
-                        <span class="fs-base fw-semibold text-gray-500">Reports &amp; Statistics</span>
+                        {% block breadcrumbs %}{% endblock %}
                     </div>
                     <div class="app-navbar flex-shrink-0 gap-2 gap-lg-4">
                         <div class="app-navbar-item ms-lg-5" id="kt_header_user_menu_toggle">
