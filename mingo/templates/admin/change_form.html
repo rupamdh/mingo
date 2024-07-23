@@ -6,7 +6,43 @@
 {{ media }}
 {% endblock %}
 
-{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static "admin/css/forms.css" %}">{% endblock %}
+{% block extrastyle %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static "admin/css/forms.css" %}">
+    <style>
+        input:not([type='text']),
+        select{
+            max-width: 300px;
+        }
+        .calendar table{
+            caption-side: top !important;
+        }
+        .calendar{
+            background-color: #0f1014;
+        }
+        .calendar table,
+        .calendar-shortcuts,
+        .calendar-cancel{
+            background: #0f1014;
+        }
+        .calendar-cancel:hover{
+            background: #0f1014;
+        }
+        .calendar caption{
+            color: #fff !important;
+        }
+        .datetime {
+            display: flex;
+            align-items: center;
+        }
+        .datetimeshortcuts{
+            padding-top: 0 !important;
+        }
+        .datetime .vDateField + .datetimeshortcuts{
+            margin-right: 40px;
+        }
+    </style>
+{% endblock %}
 
 {% block coltype %}colM{% endblock %}
 
@@ -84,5 +120,10 @@
 		</div>
 	</div>
 </div>
-
+<script>
+    $(document).ready(function(){
+        $('.vDateField').addClass('form-control');
+        $('.vTimeField').addClass('form-control');
+    });
+</script>
 {% endblock %}

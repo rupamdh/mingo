@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'mingo.context_processors.mingo_theme',
             ],
         },
     },
@@ -122,14 +123,15 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mingo', 'static'),   # Adjust path as necessary
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+# Media configuration
+MEDIA_URL = '/uploads/'
+MEDIA_ROOT =  BASE_DIR / 'uploads'
 
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-APP_ICON_MAPPING = {
-    'Library': 'ki-add-folder',  # Example class name for Library app
-    'AnotherApp': 'ki-some-icon',  # Example class name for AnotherApp
-    # Add more mappings as needed
+MINGO_SETTINGS = {
+    'theme' : 'dark',
+    #'login_template' : 'fancy'
 }

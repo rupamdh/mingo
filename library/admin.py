@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+
 # from mingo.admin import MingoBaseAdmin
 # Register your models here.
 # admin.site.register(Book)
