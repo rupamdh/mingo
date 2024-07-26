@@ -1,6 +1,6 @@
 from typing import Any
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, AdminPasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, AdminPasswordChangeForm, UserCreationForm, UserChangeForm
 from django.contrib.auth import get_user_model
 
 
@@ -25,7 +25,6 @@ class BaseAdminForm(forms.ModelForm):
 
         for field_name, field in self.fields.items():
             # field.label = field.label.upper()
-    
             if isinstance(field.widget, forms.CheckboxInput):
                 field.widget.attrs['class'] = field.widget.attrs.get('class', '') + ' form-check-input'
             elif isinstance(field.widget, forms.Select):
@@ -33,13 +32,34 @@ class BaseAdminForm(forms.ModelForm):
             elif isinstance(field.widget, forms.TextInput) or isinstance(field.widget, forms.NumberInput):
                 field.widget.attrs['class'] = field.widget.attrs.get('class', '') + ' form-control'
             
-            
     class Meta:
         fields = '__all__'
 
-class MingoPasswordChangeForm(AdminPasswordChangeForm):
-    old_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Old Password'}))
-    new_password1 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'New Password'}))
-    new_password2 = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Confirm New Password'}))
+
+
+class MingoUserAddForm(UserCreationForm):
+    class Meta:
+        model = UserModel
+        fields = ('username', 'email', 'password1', 'password2')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs.update({'class': 'form-control'})
+        
+class MingoUserChangeForm(UserChangeForm):
+    class Meta:
+        model = UserModel
+        fields = '__all__'
     
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            if isinstance(field.widget, forms.TextInput):
+                field.widget.attrs['class'] = field.widget.attrs.get('class', '') + ' form-control'
+            if isinstance(field.widget, forms.EmailInput):
+                field.widget.attrs['class'] = field.widget.attrs.get('class', '') + ' form-control'
+            if isinstance(field.widget, forms.CheckboxInput):
+                field.widget.attrs['class'] = field.widget.attrs.get('class', '') + ' form-check-input'
+            
 

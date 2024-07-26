@@ -20,6 +20,7 @@ class Book(models.Model):
     price = models.IntegerField()
     copies = models.CharField(max_length=200, choices=COPIE_CHOICE, default='available')
     created_at = models.DateTimeField(null=True, blank=True)
+    image = models.ImageField(upload_to='books/', blank=True, null=True)
 
     def __str__(self):
         return self.title

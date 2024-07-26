@@ -9,39 +9,7 @@
 {% block extrastyle %}
 {{ block.super }}
 <link rel="stylesheet" href="{% static "admin/css/forms.css" %}">
-    <style>
-        input:not([type='text']),
-        select{
-            max-width: 300px;
-        }
-        .calendar table{
-            caption-side: top !important;
-        }
-        .calendar{
-            background-color: #0f1014;
-        }
-        .calendar table,
-        .calendar-shortcuts,
-        .calendar-cancel{
-            background: #0f1014;
-        }
-        .calendar-cancel:hover{
-            background: #0f1014;
-        }
-        .calendar caption{
-            color: #fff !important;
-        }
-        .datetime {
-            display: flex;
-            align-items: center;
-        }
-        .datetimeshortcuts{
-            padding-top: 0 !important;
-        }
-        .datetime .vDateField + .datetimeshortcuts{
-            margin-right: 40px;
-        }
-    </style>
+<link rel="stylesheet" href="/static/css/change-form.css">
 {% endblock %}
 
 {% block coltype %}colM{% endblock %}
@@ -124,6 +92,29 @@
     $(document).ready(function(){
         $('.vDateField').addClass('form-control');
         $('.vTimeField').addClass('form-control');
+        $('#id_groups_input').addClass('form-control ms-0');
+        $('#id_groups_selected_input').addClass('form-control ms-0');
+        $('#id_user_permissions_input').addClass('form-control ms-0');
+        $('#id_user_permissions_selected_input').addClass('form-control ms-0');
+        $('#id_permissions_input').addClass('form-control ms-0');
+        $('#id_permissions_selected_input').addClass('form-control ms-0');
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                console.log(reader);
+                reader.onload = function (e) {
+                    $('#previmg').attr('src', reader.result);
+                    console.log(reader.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $('input[type="file"]').change(function (e) {  
+            $(this).parent().append('<img src="" id="previmg">');
+            readURL(this);
+        });
+
+        var img = $('.file-upload').parent().find('a').attr('href');
     });
 </script>
 {% endblock %}
