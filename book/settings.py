@@ -133,6 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MINGO_SETTINGS = {
     'theme' : 'dark',
-    'login_template' : 'corporate',
-    'filter-position' : 'top'
+    'login_template' : 'overlay',
 }

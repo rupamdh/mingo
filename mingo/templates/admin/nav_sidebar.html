@@ -6,7 +6,7 @@
             {% include 'admin/app_list.html' with app_list=available_apps show_changelinks=False %}
             
             <div class="separator separator-gray-300 separator-dashed my-3"></div>
-            <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+            {% comment %} <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -24,7 +24,7 @@
                     <span class="menu-title">My Accounts</span>
                 </span>
             </div>
-            <div class="separator separator-gray-300 separator-dashed my-3"></div>
+            <div class="separator separator-gray-300 separator-dashed my-3"></div> {% endcomment %}
         </div>
     </div>
 </div>

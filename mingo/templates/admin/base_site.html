@@ -25,8 +25,8 @@
                         <i class="ki-outline ki-abstract-14 lh-0 fs-1"></i>
                     </div>
                     <a href="{% url 'admin:index' %}">
-                        <img alt="{{ site_header }}" src="/static/media/logos/custom-2.svg" class="h-25px theme-light-show">
-                        <img alt="{{ site_header }}" src="/static/media/logos/custom-2.svg" class="h-25px theme-dark-show">
+                        <img alt="{{ site_header }}" src="/static/media/logos/logo.png" class="h-25px theme-light-show">
+                        <img alt="{{ site_header }}" src="/static/media/logos/logo.png" class="h-25px theme-dark-show">
                     </a>
                 </div>
                 <div class="d-flex flex-stack flex-lg-row-fluid" id="kt_app_header_wrapper">
@@ -43,7 +43,7 @@
                                 </div>
 
                                 <div class="cursor-pointer symbol symbol symbol-circle symbol-35px symbol-md-40px">
-                                    <img class="" src="/static/media/avatars/300-3.jpg" alt="user">
+                                    <img class="" src="/static/media/avatars/avatar.png" alt="user">
                                     <div class="position-absolute translate-middle bottom-0 mb-1 start-100 ms-n1 bg-success rounded-circle h-8px w-8px">
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                 <div class="menu-item px-3">
                                     <div class="menu-content d-flex align-items-center px-3">
                                         <div class="symbol symbol-50px me-5">
-                                            <img alt="Logo" src="/static/media/avatars/300-3.jpg">
+                                            <img alt="Logo" src="/static/media/avatars/avatar.png" class="rounded-4">
                                         </div>
                                         <div class="d-flex flex-column">
                                             <div class="fw-bold d-flex align-items-center fs-5">
@@ -106,7 +106,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="menu-item px-5"><a href="#" class="menu-link px-5">Sign Out</a></div>
+                                <div class="menu-item px-5">
+                                    <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="menu-link px-5 border-0 bg-transparent">Sign Out</button>
+                                    </form>
+                                    {% comment %} <a href="#" class="menu-link px-5">Sign Out</a> {% endcomment %}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -119,8 +125,8 @@
 {% block sidebar-logo %}
     <div id="kt_app_sidebar_logo" class="app-sidebar-logo d-flex flex-stack px-9 py-5">
         <a href="{% url 'admin:index' %}">
-            <img alt="{{ site_header }}" src="/static/media/logos/logo-django.svg" class="h-30px theme-light-show">
-            <img alt="{{ site_header }}" src="/static/media/logos/custom-2.svg" class="h-30px theme-dark-show">
+            <img alt="{{ site_header }}" src="/static/media/logos/logo.png" class="h-30px theme-light-show">
+            <img alt="{{ site_header }}" src="/static/media/logos/logo-dark.png" class="h-30px theme-dark-show">
         </a>
         <div class="ms-2">
             <div class="btn btn-icon btn-circle btn-light btn-color-gray-500 btn-active-color-primary w-40px h-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" id="kt_activities_toggle">
@@ -141,7 +147,7 @@
         <div class="me-2">
             <div class="d-flex align-items-center" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-overflow="true" data-kt-menu-placement="top-start">
                 <div class="d-flex flex-center symbol symbol-circle symbol-40px">
-                    <img src="/static/media/avatars/300-1.jpg" alt="image">
+                    <img src="/static/media/avatars/avatar.png" alt="image">
                 </div>
                 <div class="d-flex flex-column align-items-start justify-content-center ms-3">
                     <span class="text-gray-500 fs-8 fw-semibold">Welcome</span>
